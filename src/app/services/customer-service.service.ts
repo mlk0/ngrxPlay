@@ -3,7 +3,7 @@ import { Customer } from '../models/customer';
 import { CustomersComponent } from '../customers/customers.component';
 
 @Injectable()
-export class CustomerServiceService {
+export class CustomerService {
 
   constructor() {
   
@@ -26,6 +26,7 @@ export class CustomerServiceService {
 
   getCustomers() : Customer[] 
   {
+    console.log('in CustomerService.getCustomers()')
     return this.allCustomers;
   }
 
