@@ -1,0 +1,10 @@
+<p>
+  customers works!
+</p>
+<div>
+  <pre>{{customers | json}}</pre>
+</div>
+<div *ngFor="let c of customers">
+  {{c.name}} | {{c.email}} | <button (click)='deleteCustomer(c.id)'>delete</button>
+</div>
+ 
