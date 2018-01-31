@@ -15,6 +15,7 @@ import { HttpModule } from "@angular/http";
 import { Urls } from './constants';
 import { UsersComponent } from './users/users.component';
 import { JsonPlaceholderService } from './services/json-placeholder.service';
+import { userReducer } from './store/reducers/user.reducer';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { JsonPlaceholderService } from './services/json-placeholder.service';
     BrowserModule,
     //it is important that the key associated with the reducer needs to be identical to the state slice in AppState
     //and this needs to match the store.select statement
-    StoreModule.forRoot({ customers: customerReducer })
+    StoreModule.forRoot({ customers: customerReducer, users : userReducer })
     , EffectsModule.forRoot([CustomerEffectsService])
 
     , HttpModule

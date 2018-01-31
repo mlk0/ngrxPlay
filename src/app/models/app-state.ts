@@ -1,7 +1,8 @@
 import { Customer } from "./customer";
-import { Product } from "./product";
+ 
+import { User } from "./user";
 
 export interface AppState {
     customers: Customer[]
-   // products : Product[]
+    users : User[];
 }
