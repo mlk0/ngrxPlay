@@ -6,6 +6,9 @@ import * as customerActions from "../../store/actions/customer.actions";
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+ import 'rxjs/add/observable/from';
+import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
  
 
 @Injectable()
@@ -13,6 +16,14 @@ export class CustomerEffectsService {
 
   constructor(private customerService : CustomerService, 
               private action$ : Actions) { }
+
+
+
+  // @Effect() loadCustomers2 = this.action$.ofType(customerActions.LOAD_CUSTOMERS) //this returns Actions<Action> which is the same as Observable<Action>
+  // .switchMap(
+  //   //() is meant for transfering the arguments - each individual observable in the previous stream
+  //   () =>  ( Observable.from(this.customerService.getCustomers())  )
+  // ) //this will need to perform a conversion from one type of an observable to another type of an observable so from Actions<Action> to Observable<Customer[]>
 
 
   @Effect() loadCustomers = 

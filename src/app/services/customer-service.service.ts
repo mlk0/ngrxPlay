@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
 import { CustomersComponent } from '../customers/customers.component';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CustomerService {
@@ -29,6 +30,13 @@ export class CustomerService {
     console.log('in CustomerService.getCustomers()')
     return this.allCustomers;
   }
+
+  // getCustomersO() : Observable<Customer[]> 
+  // {
+  //   console.log('in CustomerService.getCustomers()')
+  //   return  Observable.from(this.allCustomers) ;
+  // }
+
 
   deleteCustomer(customerId : number) : number {
 
