@@ -3,7 +3,12 @@ import { Http , Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/user';
 import 'rxjs/add/observable/from';
-
+//import 'rxjs/add/observable/just';
+///import 'rxjs/add/operator/just';
+//import 'rxjs/add/operator/return';
+//import 'rxjs/add/operator/Return'
+//import * as Rx from 'rxjs/rx';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class JsonPlaceholderService {
@@ -11,6 +16,21 @@ export class JsonPlaceholderService {
   readonly usersRoute : string = 'users';
 
   constructor(private http : Http, @Inject('JSON_PLACEHOLDER') private serviceUrl : string) { 
+  }
+
+  addUser(user : User) :  Observable<User> {
+    //let response = new Observable<User>()
+
+    let newUserId = Math.round(Math.random() * 100);
+
+    let someNewUser = <User>{ id:newUserId,name:user.name,username:user.username, email:user.email}
+    
+    console.log(`JsonPlaceholderService.addUser - someNewUser : ${JSON.stringify(someNewUser)}`);
+
+    //http.post should return Observable<User>, I am just mocking this behaviour
+    let someNewUserObservable = Observable.of(someNewUser);
+
+    return someNewUserObservable;
   }
 
   getUsers() : Observable<User[]>

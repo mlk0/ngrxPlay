@@ -11,6 +11,11 @@ export function userReducer(
         case userActions.LOAD_USERS_SUCCESS:{
             return action.payload;
         }
+        case userActions.ADD_USER_SUCCESS:{
+            let originalListOfUsers = state;
+            let newListWithTheAddedUser = originalListOfUsers.concat(action.payload);
+            return newListWithTheAddedUser;
+        }
         default : 
         {
             return state;

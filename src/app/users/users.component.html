@@ -4,5 +4,8 @@
 <div *ngFor="let user of users">
   {{user.name}} | {{user.username}} | {{user.email}}
 </div>
+<div>
+  <button (click)="addUser()" >Add New User</button>
+</div>
 
 <pre>{{users | json}}</pre>
