@@ -18,6 +18,7 @@ export function userReducer(
         }
         default : 
         {
+            console.log('returing the default state')
             return state;
         }
     }

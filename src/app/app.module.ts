@@ -18,6 +18,11 @@ import { JsonPlaceholderService } from './services/json-placeholder.service';
 import { userReducer } from './store/reducers/user.reducer';
 import { UserEffectsService } from './store/effects/user-effects.service';
 
+//import {  StoreDevtoolsModule} from "@ngrx/store-devtools";
+
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +37,7 @@ import { UserEffectsService } from './store/effects/user-effects.service';
     , EffectsModule.forRoot([CustomerEffectsService,UserEffectsService])
 
     , HttpModule
+    ,StoreDevtoolsModule.instrument()
   ],
   providers: [
     CustomerService,JsonPlaceholderService
