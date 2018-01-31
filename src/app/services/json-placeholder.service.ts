@@ -8,17 +8,14 @@ import 'rxjs/add/observable/from';
 @Injectable()
 export class JsonPlaceholderService {
 
-  readonly usersRoute : string = 'usersx';
+  readonly usersRoute : string = 'users';
 
   constructor(private http : Http, @Inject('JSON_PLACEHOLDER') private serviceUrl : string) { 
-
   }
 
   getUsers() : Observable<User[]>
   {
-
-    
-    let usersUrlParts = [
+   let usersUrlParts = [
       this.serviceUrl,
       this.usersRoute
     ]
@@ -30,7 +27,7 @@ export class JsonPlaceholderService {
 
     
 
-    let res = this.http.get(usersUrl)
+    let response = this.http.get(usersUrl)
     .map((r:Response) => {
       
       //I need to investigate the response-this is pretty much standard structure
@@ -40,8 +37,7 @@ export class JsonPlaceholderService {
       if(r.status == 200){
 
         let responseBody = r.json(); //get the actual body if present
-
-        //let tst = responseBody[2];
+      
 
         if(responseBody){
 
@@ -66,7 +62,7 @@ export class JsonPlaceholderService {
                 email : item.email
               }})
           
-          //return <User[]>{}
+          
           return mappedItemsAsUsers;
         }
 
@@ -75,15 +71,15 @@ export class JsonPlaceholderService {
 
       }
       else{
-        //some error happened
+        //some error happened and the response code is other than 200
         let responseInCaseOfError : Observable<User[]> = Observable.from([]); //just make sure that there will always be some observable created of an empty list for the return
         return responseInCaseOfError;
       }
     })
     
 
-    //return response;
-    return res;
+    
+    return response;
 
   }
 
